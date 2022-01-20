@@ -1,0 +1,17 @@
+int Solution::solve(vector<int> &A, int B) {
+    if(B > A.size())
+        return -1;
+    int maxi=0;
+    for(int i=0; i<B; i++){
+        maxi+=A[i];
+    }
+    int ans = maxi, l=A.size()-1;
+    int j = B-1;
+    for(int i=0; i<B; i++){
+        maxi = maxi-A[j]+A[l-i];
+        ans = max(ans,maxi);
+        j--;
+    }
+    return ans;
+}
+
